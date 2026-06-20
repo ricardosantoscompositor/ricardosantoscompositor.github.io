@@ -6,47 +6,490 @@
 <title>Ricardo Santos Compositor</title>
 
 <style>
-body{
+*{
 margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-color:white;
-text-align:center;
-padding:50px 20px;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
-h1{
+body{
+background:#f4f6f9;
+color:#222;
+}
+
+.hero{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+padding:60px 20px;
+text-align:center;
+color:#fff;
+}
+
+.hero img{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid rgba(255,255,255,.8);
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.hero h1{
+margin-top:20px;
 font-size:3rem;
+}
+
+.hero p{
+margin-top:10px;
+font-size:1.1rem;
+opacity:.9;
+}
+
+.instagram{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:white;
+color:#111;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:30px 15px;
+}
+
+.destaque{
+background:white;
+padding:25px;
+border-radius:20px;
+margin-bottom:30px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+border-left:6px solid #f59e0b;
+}
+
+.destaque h2{
+color:#f59e0b;
 margin-bottom:10px;
 }
 
-p{
-font-size:1.2rem;
+.busca{
+margin-bottom:25px;
 }
 
-.card{
+.busca input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+font-size:16px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.filtros{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:25px;
+}
+
+.filtros button{
+border:none;
+padding:12px 18px;
+border-radius:25px;
+cursor:pointer;
+background:#e5e7eb;
+font-weight:bold;
+}
+
+.filtros button:hover{
+background:#2563eb;
+color:white;
+}
+
+.musica{
 background:white;
-color:#111;
-max-width:700px;
-margin:30px auto;
-padding:30px;
+padding:20px;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
+margin-bottom:20px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.musica h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.musica p{
+margin-bottom:12px;
+color:#666;
+}
+
+.tag{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+color:white;
+margin-bottom:10px;
+}
+
+.sertanejo{background:#16a34a;}
+.gospel{background:#7c3aed;}
+.forro{background:#ea580c;}
+.pagode{background:#0891b2;}
+.rock{background:#dc2626;}
+
+audio{
+width:100%;
+margin-top:10px;
+}
+
+details{
+margin-top:15px;
+background:#f8fafc;
+padding:10px;
+border-radius:10px;
+}
+
+summary{
+cursor:pointer;
+font-weight:bold;
+color:#2563eb;
+}
+
+.letra{
+margin-top:10px;
+white-space:pre-line;
+line-height:1.7;
+}
+
+footer{
+text-align:center;
+padding:40px 20px;
+color:#777;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.hero img{
+width:140px;
+height:140px;
+}
+
 }
 </style>
-
 </head>
 <body>
 
+<section class="hero">
+
+<img src="perfil.jpg" alt="Ricardo Santos">
+
 <h1>Ricardo Santos Compositor</h1>
 
-<p>Site Oficial</p>
+<p>
+Compositor • Autor de Canções • Catálogo Musical
+</p>
 
-<div class="card">
-<h2>🎵 Catálogo Musical</h2>
-<p>Site em construção.</p>
-<p>Em breve minhas composições estarão disponíveis aqui.</p>
+<a class="instagram"
+href="https://instagram.com/ricardosantoscompositor"
+target="_blank">
+Instagram @ricardosantoscompositor
+</a>
+
+</section>
+
+<div class="container">
+
+<div class="destaque">
+<h2>⭐ Música em Destaque</h2>
+<h3>Meu Interior</h3>
+<p>
+Uma composição sertaneja que fala das raízes,
+família e saudade da vida simples.
+</p>
 </div>
+
+<div class="busca">
+<input
+type="text"
+id="pesquisa"
+placeholder="Pesquisar música..."
+onkeyup="pesquisarMusica()">
+</div>
+
+<div class="filtros">
+<button onclick="filtrar('todas')">Todas</button>
+<button onclick="filtrar('sertanejo')">Sertanejo</button>
+<button onclick="filtrar('gospel')">Gospel</button>
+<button onclick="filtrar('forro')">Forró</button>
+<button onclick="filtrar('pagode')">Pagode</button>
+<button onclick="filtrar('rock')">Rock</button>
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="sertanejo">
+
+<div class="tag sertanejo">
+SERTANEJO
+</div>
+
+<h3>Meu Interior</h3>
+
+<p>
+Moda sertaneja romântica.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+Meu interior mora em mim
+
+Mesmo longe do sertão
+
+Levo no peito a lembrança
+
+Guardada no coração
+</div>
+</details>
+
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="sertanejo">
+
+<div class="tag sertanejo">
+SERTANEJO
+</div>
+
+<h3>Saudade no Peito</h3>
+
+<p>
+Sertanejo romântico.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+A saudade bate forte
+
+Quando lembro de você
+
+As noites ficam longas
+
+Sem teu jeito de viver
+</div>
+</details>
+
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="gospel">
+
+<div class="tag gospel">
+GOSPEL
+</div>
+
+<h3>Deus Está Aqui</h3>
+
+<p>
+Canção de louvor.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+Mesmo quando tudo falha
+
+Posso confiar
+
+Pois tua presença
+
+Nunca vai me abandonar
+</div>
+</details>
+
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="forro">
+
+<div class="tag forro">
+FORRÓ
+</div>
+
+<h3>Noite de São João</h3>
+
+<p>
+Forró tradicional.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+Acende a fogueira
+
+Chama o sanfoneiro
+
+Hoje a festa vai durar
+
+Até o amanhecer inteiro
+</div>
+</details>
+
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="pagode">
+
+<div class="tag pagode">
+PAGODE
+</div>
+
+<h3>Mesa de Bar</h3>
+
+<p>
+Pagode romântico.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+Na mesa de bar
+
+Lembro do teu olhar
+
+E o coração insiste
+
+Em não te esquecer
+</div>
+</details>
+
+</div>
+
+<!-- MUSICA -->
+
+<div class="musica" data-genero="rock">
+
+<div class="tag rock">
+ROCK
+</div>
+
+<h3>Liberdade Total</h3>
+
+<p>
+Rock nacional.
+</p>
+
+<audio controls>
+<source src="">
+</audio>
+
+<details>
+<summary>📖 Ver Letra</summary>
+<div class="letra">
+Quero viver
+
+Sem medo de errar
+
+Seguindo meu caminho
+
+Até o sol raiar
+</div>
+</details>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Ricardo Santos Compositor
+</footer>
+
+<script>
+
+function filtrar(genero){
+
+let musicas =
+document.querySelectorAll('.musica');
+
+musicas.forEach(function(m){
+
+if(genero === 'todas'){
+m.style.display='block';
+}else{
+m.style.display=
+m.dataset.genero === genero
+? 'block'
+: 'none';
+}
+
+});
+
+}
+
+function pesquisarMusica(){
+
+let texto =
+document
+.getElementById('pesquisa')
+.value
+.toLowerCase();
+
+let musicas =
+document.querySelectorAll('.musica');
+
+musicas.forEach(function(m){
+
+let titulo =
+m.querySelector('h3')
+.innerText
+.toLowerCase();
+
+m.style.display =
+titulo.includes(texto)
+? 'block'
+: 'none';
+
+});
+
+}
+
+</script>
 
 </body>
 </html>

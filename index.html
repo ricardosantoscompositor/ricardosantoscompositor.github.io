@@ -253,7 +253,7 @@ onkeyup="pesquisarMusica()">
 Uma amizade que se transforma em paixão e pede coragem para uma declaração sincera.
 </p>
 
-<audio controls>
+<audio controls controlsList="nodownload">
 <source src="1-amizade-de-fachada.mp3" type="audio/mpeg">
 </audio>
 
@@ -309,7 +309,7 @@ Eu quero ter seu coração
 Uma canção sobre paixão intensa, saudade e a esperança de reencontrar quem se ama.
 </p>
 
-<audio controls>
+<audio controls controlsList="nodownload">
 <source src="2-Em-tuas-maos.mp3" type="audio/mpeg">
 </audio>
 
@@ -363,7 +363,7 @@ Amar é sofrer
 Uma história de amor verdadeiro que atravessa o tempo e transforma a vida.
 </p>
 
-<audio controls>
+<audio controls controlsList="nodownload">
 <source src="3-nosso-amor.mp3" type="audio/mpeg">
 </audio>
 
@@ -426,7 +426,7 @@ A vida inteira
 Uma composição sobre a chegada inesperada do amor e suas transformações.
 </p>
 
-<audio controls>
+<audio controls controlsList="nodownload">
 <source src="4-quando-o-amor-chegar.mp3" type="audio/mpeg">
 </audio>
 
@@ -530,6 +530,23 @@ titulo.includes(texto)
 
 }
 
+document.querySelectorAll('audio').forEach(audio => {
+
+audio.addEventListener('play', function() {
+
+document.querySelectorAll('audio').forEach(outro => {
+
+if(outro !== this){
+outro.pause();
+outro.currentTime = 0;
+}
+
+});
+
+});
+
+});  
+  
 </script>
 
 </body>

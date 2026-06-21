@@ -75,14 +75,13 @@ padding:30px 15px;
 }
 
 .lista-musicas{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
+column-count:2;
+column-gap:20px;
 }
-
+  
 @media(max-width:768px){
 .lista-musicas{
-grid-template-columns:1fr;
+column-count:1;
 }
   
 .sobre{
@@ -170,10 +169,11 @@ width:100%;
 background:white;
 padding:15px;
 border-radius:15px;
-margin-bottom:12px;
+margin-bottom:20px;
 box-shadow:0 3px 10px rgba(0,0,0,.06);
+break-inside:avoid;
 }
-
+  
 .musica h3{
 color:#2563eb;
 margin-bottom:10px;

@@ -63,9 +63,16 @@ margin:auto;
 padding:30px 15px;
 }
 
- .lista-musicas{
-column-count:2;
-column-gap:20px;
+.lista-musicas{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+@media(max-width:768px){
+.lista-musicas{
+grid-template-columns:1fr;
+}
 }
 
 .musica{
@@ -327,17 +334,17 @@ Instagram @ricardosantoscompositor
 
 <div class="estatisticas">
 
-  <div class="estatisticas_item">
+  <div class="item">
     <h3 id="total-musicas">0</h3>
     <p>Músicas</p>
   </div>
 
-  <div class="estatisticas_item">
+  <div class="item">
     <h3 id="total-generos">0</h3>
     <p>Gêneros</p>
   </div>
 
-  <div class="estatisticas_item">
+  <div class="item">
     <h3 id="total-gravacao">0</h3>
     <p>Disponíveis para gravação</p>
   </div>
@@ -364,8 +371,7 @@ a saudade e as emoções do cotidiano.
 </div>
 
 </section>
-
-</section>
+ 
 <div class="container">
 
 <div class="destaque">
@@ -478,10 +484,6 @@ onkeyup="pesquisarMusica()">
 
 <div class="tag sertanejo">
 SERTANEJO
-</div>
-
-<div class="tag gravacao">
-DISPONÍVEL PARA GRAVAÇÃO
 </div>
 
  <div class="tag-gravacao">
@@ -765,36 +767,6 @@ Pra você minha paixão
 © 2026 Ricardo Santos Compositor
 </footer>
 
- window.addEventListener('load', function(){
-
-  // Total de músicas
-  let musicas =
-  document.querySelectorAll('.musica');
-
-  document.getElementById('total-musicas').innerText =
-  musicas.length;
-
-  // Total de gêneros
-  let generos = new Set();
-
-  musicas.forEach(function(m){
-    generos.add(
-      m.dataset.genero
-    );
-  });
-
-  document.getElementById('total-generos').innerText =
-  generos.size;
-
-  // Disponíveis para gravação
-  let disponiveis =
-  document.querySelectorAll('.disponivel-gravacao');
-
-  document.getElementById('total-gravacao').innerText =
-  disponiveis.length;
-
-});
- 
 <script>
  
 function filtrar(genero){
@@ -860,14 +832,26 @@ outro.currentTime = 0;
 });
 
 }); 
- 
+
  window.addEventListener('load', function(){
 
- let totalMusicas =
- document.querySelectorAll('.musica').length;
+  const musicas =
+  document.querySelectorAll('.musica');
 
- document.getElementById('total-musicas').innerText =
- totalMusicas;
+  document.getElementById('total-musicas').innerText =
+  musicas.length;
+
+  const generos = new Set();
+
+  musicas.forEach(function(m){
+    generos.add(m.dataset.genero);
+  });
+
+  document.getElementById('total-generos').innerText =
+  generos.size;
+
+  document.getElementById('total-gravacao').innerText =
+  document.querySelectorAll('.disponivel-gravacao').length;
 
 });
  

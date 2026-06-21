@@ -75,18 +75,27 @@ padding:30px 15px;
 }
 
 .lista-musicas{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-align-items:flex-start;
+column-count:2;
+column-gap:20px;
+}
+
+.musica{
+display:inline-block;
+width:100%;
+background:white;
+padding:15px;
+border-radius:15px;
+margin-bottom:20px;
+box-shadow:0 3px 10px rgba(0,0,0,.06);
+break-inside:avoid;
 }
   
 @media(max-width:768px){
 
 .lista-musicas{
-display:block;
+column-count:1;
 }
-
+  
 .musica{
 width:100%;
 flex:none;

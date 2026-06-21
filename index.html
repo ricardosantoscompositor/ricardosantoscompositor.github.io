@@ -193,6 +193,7 @@ margin-bottom:10px;
 .pagode{background:#0891b2;}
 .rock{background:#dc2626;}
 .gravacao{background:#2563eb;}
+ 
 
 audio{
 width:100%;
@@ -236,6 +237,61 @@ width:140px;
 height:140px;
 }
 
+.sobre{
+background:white;
+max-width:1100px;
+margin:30px auto;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.sobre h2{
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.sobre p{
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.sobre-lista{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.sobre-lista div{
+background:#f8fafc;
+padding:15px;
+border-radius:12px;
+font-weight:bold;
+}
+
+.estatisticas{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:30px auto;
+max-width:1100px;
+}
+
+.estatisticas .item{
+background:white;
+padding:20px;
+border-radius:15px;
+min-width:220px;
+text-align:center;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.estatisticas h3{
+color:#2563eb;
+margin-bottom:5px;
+}
+ 
 }
 </style>
 </head>
@@ -269,15 +325,13 @@ autor de canções românticas que retratam o amor,
 a saudade e as emoções do cotidiano.
 </p>
 
-<p>
-Seu catálogo reúne composições inéditas disponíveis
-para interpretação e gravação, valorizando letras
-marcantes, melodias envolventes e histórias que se
-conectam com o público.
-</p>
+<div class="sobre-lista">
 
-<div class="sobre-destaque">
-🎤 Músicas estão disponíveis para gravação
+<div>✓ Canções inéditas</div>
+<div>✓ Disponíveis para gravação</div>
+<div>✓ Letras autorais</div>
+<div>✓ Catálogo em expansão</div>
+
 </div>
 
 </section>

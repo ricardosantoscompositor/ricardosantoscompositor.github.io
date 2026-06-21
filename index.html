@@ -63,10 +63,15 @@ margin:auto;
 padding:30px 15px;
 }
 
-  .lista-musicas{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
+ .lista-musicas{
+column-count:2;
+column-gap:20px;
+}
+
+.musica{
+display:inline-block;
+width:100%;
+margin-bottom:20px;
 }
 
 @media(max-width:768px){

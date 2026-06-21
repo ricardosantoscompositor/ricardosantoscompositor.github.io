@@ -464,7 +464,7 @@ onkeyup="pesquisarMusica()">
 <!-- MUSICA -->
   
 <div class="lista-musicas">
-<div class="musica" data-genero="sertanejo">
+<div class="musica disponivel-gravacao" data-genero="sertanejo">
 
 <div class="tag sertanejo">
 SERTANEJO
@@ -526,7 +526,7 @@ Eu quero ter seu coração
 
 
 
-<div class="musica" data-genero="sertanejo">
+<div class="musica disponivel-gravacao" data-genero="sertanejo">
 
 <div class="tag sertanejo">
 SERTANEJO
@@ -585,7 +585,7 @@ Amar é sofrer
 
 
 
-<div class="musica" data-genero="sertanejo">
+<div class="musica disponivel-gravacao" data-genero="sertanejo">
 
 <div class="tag sertanejo">
 SERTANEJO
@@ -680,7 +680,7 @@ E que eu escolheria você outra vez.
 
 
 
-<div class="musica" data-genero="sertanejo">
+<div class="musica disponivel-gravacao" data-genero="sertanejo">
 
 <div class="tag sertanejo">
 SERTANEJO
@@ -751,8 +751,38 @@ Pra você minha paixão
 © 2026 Ricardo Santos Compositor
 </footer>
 
-<script>
+ window.addEventListener('load', function(){
 
+  // Total de músicas
+  let musicas =
+  document.querySelectorAll('.musica');
+
+  document.getElementById('total-musicas').innerText =
+  musicas.length;
+
+  // Total de gêneros
+  let generos = new Set();
+
+  musicas.forEach(function(m){
+    generos.add(
+      m.dataset.genero
+    );
+  });
+
+  document.getElementById('total-generos').innerText =
+  generos.size;
+
+  // Disponíveis para gravação
+  let disponiveis =
+  document.querySelectorAll('.disponivel-gravacao');
+
+  document.getElementById('total-gravacao').innerText =
+  disponiveis.length;
+
+});
+ 
+<script>
+ 
 function filtrar(genero){
 
 let musicas =

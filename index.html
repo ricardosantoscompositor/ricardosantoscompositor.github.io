@@ -318,7 +318,7 @@ Instagram @ricardosantoscompositor
 <div class="estatisticas">
 
 <div class="item">
-<h3>🎵 4</h3>
+<h3 id="total-musicas">0</h3>
 <p>Músicas Disponíveis</p>
 </div>
 
@@ -815,8 +815,18 @@ outro.currentTime = 0;
 
 });
 
-});  
-  
+}); 
+ 
+ window.addEventListener('load', function(){
+
+ let totalMusicas =
+ document.querySelectorAll('.musica').length;
+
+ document.getElementById('total-musicas').innerText =
+ totalMusicas;
+
+});
+ 
 </script>
 
 </body>

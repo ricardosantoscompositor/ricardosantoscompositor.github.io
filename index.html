@@ -62,6 +62,18 @@ max-width:1100px;
 margin:auto;
 padding:30px 15px;
 }
+
+  .lista-musicas{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+@media(max-width:768px){
+.lista-musicas{
+grid-template-columns:1fr;
+}
+}
   
 .sobre{
 background:white;
@@ -371,7 +383,8 @@ onkeyup="pesquisarMusica()">
 </div>
 
 <!-- MUSICA -->
-
+  
+<div class="lista-musicas">
 <div class="musica" data-genero="sertanejo">
 
 <div class="tag sertanejo">SERTANEJO</div>

@@ -7,7 +7,12 @@
 <title>Ricardo Santos Compositor</title>
 <meta name="description"
 content="Ricardo Santos, compositor sertanejo. Catálogo de músicas inéditas disponíveis para gravação, letras autorais e canções românticas.">
+<meta name="keywords"
+content="compositor sertanejo,músicas inéditas,música para gravação,letras autorais,ricardo santos compositor">
 
+<meta name="author"
+content="Ricardo Santos">
+  
 <style>
 *{
 margin:0;
@@ -154,14 +159,16 @@ margin-bottom:25px;
 
 .busca input{
 width:100%;
-max-width:600px;
+max-width:700px;
 padding:15px;
 border:none;
 border-radius:15px;
 font-size:16px;
 box-shadow:0 4px 15px rgba(0,0,0,.08);
+display:block;
+margin:auto;
 }
-
+  
 .filtros{
 display:flex;
 gap:10px;
@@ -241,7 +248,12 @@ text-align:center;
 padding:40px 20px;
 color:#777;
 }
-
+  
+.sr-only{
+position:absolute;
+left:-9999px;
+}
+  
   .estatisticas{
 display:flex;
 justify-content:center;
@@ -310,6 +322,19 @@ font-weight:bold;
  
 }
 </style>
+
+  <meta property="og:title"
+content="Ricardo Santos Compositor">
+
+<meta property="og:description"
+content="Catálogo de músicas inéditas disponíveis para gravação.">
+
+<meta property="og:image"
+content="perfil.jpg">
+
+<meta property="og:type"
+content="website">
+  
 </head>
 <body>
 
@@ -383,7 +408,7 @@ a saudade e as emoções do cotidiano.
 
 <h3>Nosso Amor</h3>
 
-<audio controls controlsList="nodownload">
+<audio controls controlsList="nodownload" preload="none">
 <source src="3-nosso-amor.mp3" type="audio/mpeg">
 </audio>
 
@@ -461,6 +486,12 @@ E que eu escolheria você outra vez.
 </div>
 
 <div class="busca">
+
+<label
+for="pesquisa"
+class="sr-only">
+Pesquisar música
+</label>
 <input
 type="text"
 id="pesquisa"
@@ -495,7 +526,7 @@ Disponível para gravação
 Uma amizade que se transforma em paixão e pede coragem para uma declaração sincera.
 </p>
 
-<audio controls controlsList="nodownload">
+<audio controls controlsList="nodownload" preload="none">
 <source src="1-amizade-de-fachada.mp3" type="audio/mpeg">
 </audio>
 
@@ -556,7 +587,7 @@ Disponível para gravação
 Uma canção sobre paixão intensa, saudade e a esperança de reencontrar quem se ama.
 </p>
 
-<audio controls controlsList="nodownload">
+<audio controls controlsList="nodownload" preload="none">
 <source src="2-Em-tuas-maos.mp3" type="audio/mpeg">
 </audio>
 
@@ -616,7 +647,7 @@ Disponível para gravação
 Uma história de amor verdadeiro que atravessa o tempo e transforma a vida.
 </p>
 
-<audio controls controlsList="nodownload">
+<audio controls controlsList="nodownload" preload="none">
 <source src="3-nosso-amor.mp3" type="audio/mpeg">
 </audio>
 
@@ -711,7 +742,7 @@ Disponível para gravação
 Uma composição sobre a chegada inesperada do amor e suas transformações.
 </p>
 
-<audio controls controlsList="nodownload">
+<audio controls controlsList="nodownload" preload="none">
 <source src="4-quando-o-amor-chegar.mp3" type="audio/mpeg">
 </audio>
 
@@ -768,27 +799,9 @@ Pra você minha paixão
 
 <script>
  
-function filtrar(genero){
+let filtroAtual = 'todas';
 
-let musicas =
-document.querySelectorAll('.musica');
-
-musicas.forEach(function(m){
-
-if(genero === 'todas'){
-m.style.display='block';
-}else{
-m.style.display=
-m.dataset.genero === genero
-? 'block'
-: 'none';
-}
-
-});
-
-}
-
-function pesquisarMusica(){
+function atualizarLista(){
 
 let texto =
 document
@@ -806,15 +819,41 @@ m.querySelector('h3')
 .innerText
 .toLowerCase();
 
+let genero =
+m.dataset.genero;
+
+let atendePesquisa =
+titulo.includes(texto);
+
+let atendeFiltro =
+filtroAtual === 'todas'
+|| genero === filtroAtual;
+
 m.style.display =
-titulo.includes(texto)
+(atendePesquisa && atendeFiltro)
 ? 'block'
 : 'none';
 
 });
+  
+atualizarEstatisticas();
+  
+}
+
+function filtrar(genero){
+
+filtroAtual = genero;
+
+atualizarLista();
 
 }
 
+function pesquisarMusica(){
+
+atualizarLista();
+
+}
+  
 document.querySelectorAll('audio').forEach(audio => {
 
 audio.addEventListener('play', function() {
@@ -854,9 +893,18 @@ outro.currentTime = 0;
 
 });
 
-document.addEventListener('contextmenu', function(e){
-e.preventDefault();
-});
+function atualizarEstatisticas(){
+
+let visiveis =
+document.querySelectorAll(
+'.musica[style*="block"], .musica:not([style])'
+);
+
+document.getElementById('total-musicas')
+.innerText =
+visiveis.length;
+
+}
   
 </script>
 

@@ -496,7 +496,7 @@ Pesquisar música
 type="text"
 id="pesquisa"
 placeholder="Pesquisar música..."
-onkeyup="pesquisarMusica()">
+oninput="pesquisarMusica()"
 </div>
 
 <div class="filtros">
@@ -596,7 +596,7 @@ Uma canção sobre paixão intensa, saudade e a esperança de reencontrar quem s
 
 <div class="letra">
 
-EM TUAS MÃOS
+Em Tuas Mãos
 
 Sou escravo da minha paixão
 Fiquei preso, laçado em tuas mãos
@@ -656,7 +656,7 @@ Uma história de amor verdadeiro que atravessa o tempo e transforma a vida.
 
 <div class="letra">
 
-NOSSO AMOR
+Nosso Amor
 
 Eu me lembro daquela tarde de domingo
 Quando o destino resolveu nos apresentar
@@ -871,8 +871,30 @@ outro.currentTime = 0;
 
 }); 
 
- window.addEventListener('load', function(){
+window.addEventListener('load', function(){
 
+const musicas =
+document.querySelectorAll('.musica');
+
+document.getElementById('total-musicas').innerText =
+musicas.length;
+
+const generos = new Set();
+
+musicas.forEach(function(m){
+generos.add(m.dataset.genero);
+});
+
+document.getElementById('total-generos').innerText =
+generos.size;
+
+document.getElementById('total-gravacao').innerText =
+document.querySelectorAll('.disponivel-gravacao').length;
+
+atualizarLista();
+
+});
+  
   const musicas =
   document.querySelectorAll('.musica');
 
@@ -895,14 +917,25 @@ outro.currentTime = 0;
 
 function atualizarEstatisticas(){
 
-let visiveis =
-document.querySelectorAll(
-'.musica[style*="block"], .musica:not([style])'
-);
+let musicas =
+document.querySelectorAll('.musica');
+
+let visiveis = 0;
+
+musicas.forEach(function(m){
+
+let estilo =
+window.getComputedStyle(m);
+
+if(estilo.display !== 'none'){
+visiveis++;
+}
+
+});
 
 document.getElementById('total-musicas')
 .innerText =
-visiveis.length;
+visiveis;
 
 }
   

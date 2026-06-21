@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<link rel="icon" href="favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ricardo Santos Compositor</title>
-<meta name="description"
-content="Ricardo Santos, compositor sertanejo. Catálogo de músicas inéditas disponíveis para gravação, letras autorais e canções românticas.">
 
 <style>
 *{
@@ -59,31 +56,38 @@ text-decoration:none;
 border-radius:30px;
 font-weight:bold;
 }
-  
-.frase-impacto{
-font-size:20px;
-font-weight:bold;
-margin-top:12px;
-color:#fff;
-letter-spacing:0.5px;
-}
-  
+
 .container{
 max-width:1100px;
 margin:auto;
 padding:30px 15px;
 }
 
-.lista-musicas{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+ .lista-musicas{
+column-count:2;
+column-gap:20px;
 }
-  
+
+.musica{
+display:inline-block;
+width:100%;
+margin-bottom:20px;
+}
+.tag-gravacao{
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+margin-left:8px;
+margin-bottom:10px;
+}
 @media(max-width:768px){
-    .lista-musicas{
-        grid-template-columns:1fr;
-    }
+.lista-musicas{
+grid-template-columns:1fr;
+}
 }
   
 .sobre{
@@ -166,14 +170,13 @@ color:white;
 }
 
 .musica{
-width:100%;
 background:white;
 padding:15px;
 border-radius:15px;
-margin-bottom:20px;
+margin-bottom:12px;
 box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
-  
+
 .musica h3{
 color:#2563eb;
 margin-bottom:10px;
@@ -233,29 +236,6 @@ padding:40px 20px;
 color:#777;
 }
 
-  .estatisticas{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin:30px auto;
-max-width:1100px;
-}
-
-.estatisticas .item{
-background:white;
-padding:20px;
-border-radius:15px;
-min-width:220px;
-text-align:center;
-box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
-
-.estatisticas h3{
-color:#2563eb;
-margin-bottom:5px;
-} 
-  
 @media(max-width:768px){
 
 .hero h1{
@@ -298,6 +278,29 @@ padding:15px;
 border-radius:12px;
 font-weight:bold;
 }
+
+.estatisticas{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:30px auto;
+max-width:1100px;
+}
+
+.estatisticas .item{
+background:white;
+padding:20px;
+border-radius:15px;
+min-width:220px;
+text-align:center;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.estatisticas h3{
+color:#2563eb;
+margin-bottom:5px;
+}
  
 }
 </style>
@@ -309,9 +312,6 @@ font-weight:bold;
 <img src="perfil.jpg" alt="Ricardo Santos">
 
 <h1>Ricardo Santos Compositor</h1>
-<p class="frase-impacto">
-🎵 Canções inéditas disponíveis para gravação
-</p>
 
 <p>
 Compositor • Autor de Canções • Catálogo Musical
@@ -319,26 +319,25 @@ Compositor • Autor de Canções • Catálogo Musical
 
 <a class="instagram"
 href="https://instagram.com/ricardosantoscompositor"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 Instagram @ricardosantoscompositor
 </a>
-  
+
 </section>
 
 <div class="estatisticas">
 
-  <div class="item">
+  <div class="estatisticas_item">
     <h3 id="total-musicas">0</h3>
     <p>Músicas</p>
   </div>
 
-  <div class="item">
+  <div class="estatisticas_item">
     <h3 id="total-generos">0</h3>
     <p>Gêneros</p>
   </div>
 
-  <div class="item">
+  <div class="estatisticas_item">
     <h3 id="total-gravacao">0</h3>
     <p>Disponíveis para gravação</p>
   </div>
@@ -365,7 +364,8 @@ a saudade e as emoções do cotidiano.
 </div>
 
 </section>
- 
+
+</section>
 <div class="container">
 
 <div class="destaque">
@@ -478,6 +478,10 @@ onkeyup="pesquisarMusica()">
 
 <div class="tag sertanejo">
 SERTANEJO
+</div>
+
+<div class="tag gravacao">
+DISPONÍVEL PARA GRAVAÇÃO
 </div>
 
  <div class="tag-gravacao">
@@ -761,6 +765,36 @@ Pra você minha paixão
 © 2026 Ricardo Santos Compositor
 </footer>
 
+ window.addEventListener('load', function(){
+
+  // Total de músicas
+  let musicas =
+  document.querySelectorAll('.musica');
+
+  document.getElementById('total-musicas').innerText =
+  musicas.length;
+
+  // Total de gêneros
+  let generos = new Set();
+
+  musicas.forEach(function(m){
+    generos.add(
+      m.dataset.genero
+    );
+  });
+
+  document.getElementById('total-generos').innerText =
+  generos.size;
+
+  // Disponíveis para gravação
+  let disponiveis =
+  document.querySelectorAll('.disponivel-gravacao');
+
+  document.getElementById('total-gravacao').innerText =
+  disponiveis.length;
+
+});
+ 
 <script>
  
 function filtrar(genero){
@@ -826,33 +860,17 @@ outro.currentTime = 0;
 });
 
 }); 
-
+ 
  window.addEventListener('load', function(){
 
-  const musicas =
-  document.querySelectorAll('.musica');
+ let totalMusicas =
+ document.querySelectorAll('.musica').length;
 
-  document.getElementById('total-musicas').innerText =
-  musicas.length;
-
-  const generos = new Set();
-
-  musicas.forEach(function(m){
-    generos.add(m.dataset.genero);
-  });
-
-  document.getElementById('total-generos').innerText =
-  generos.size;
-
-  document.getElementById('total-gravacao').innerText =
-  document.querySelectorAll('.disponivel-gravacao').length;
+ document.getElementById('total-musicas').innerText =
+ totalMusicas;
 
 });
-
-document.addEventListener('contextmenu', function(e){
-e.preventDefault();
-});
-  
+ 
 </script>
 
 </body>
